@@ -4,9 +4,11 @@ import { Sidebar } from '@/components/sidebar'
 
 export function AppLayout() {
   return (
-    <div className='flex min-h-svh gap-16 p-6'>
+    <div className='flex min-h-svh p-6'>
       <Sidebar />
-      <Outlet />
+      <div className='flex-1 rounded-2xl bg-card p-6'>
+        <Outlet />
+      </div>
     </div>
   )
 }
