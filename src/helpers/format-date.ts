@@ -1,3 +1,8 @@
-export function formatDate(date: Date, options?: Intl.DateTimeFormatOptions) {
-  return date.toLocaleDateString('pt-BR', options)
+export function formatDate(
+  date: Date | string,
+  options?: Intl.DateTimeFormatOptions,
+) {
+  const newDate = new Date(date)
+
+  return newDate.toLocaleDateString('pt-BR', options)
 }
