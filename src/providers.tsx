@@ -1,13 +1,16 @@
 import { QueryClientProvider } from '@tanstack/react-query'
-import { RouterProvider } from 'react-router'
 
-import { queryClient } from './lib/react-query'
-import { router } from './routes'
+import { queryClient } from '@/lib/react-query'
+import { StoreProvider } from '@/store/store-provider'
 
-export function Providers() {
+interface ProvidersProps {
+  children: React.ReactNode
+}
+
+export function Providers({ children }: Readonly<ProvidersProps>) {
   return (
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
+      <StoreProvider>{children}</StoreProvider>
     </QueryClientProvider>
   )
 }
