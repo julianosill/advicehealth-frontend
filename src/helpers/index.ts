@@ -1,4 +1,6 @@
+export { fillEmptySlots } from './fill-empty-slots'
 export { formatCurrency } from './format-currency'
 export { formatDate } from './format-date'
 export { formatTime } from './format-time'
+export { generateEmptySlots } from './generate-empty-slots'
 export { wait } from './wait'
