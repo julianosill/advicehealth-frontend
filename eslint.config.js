@@ -18,6 +18,9 @@ export default tseslint.config(
       ...tseslint.configs.recommended,
     ],
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
+    settings: {
+      react: { version: 'detect' },
+    },
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
