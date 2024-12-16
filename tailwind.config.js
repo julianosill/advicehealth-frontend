@@ -4,6 +4,9 @@ export default {
   content: ['./index.html', './src/**/*.{ts,tsx,js,jsx}'],
   theme: {
     extend: {
+      screens: {
+        xs: '480px',
+      },
       fontFamily: {
         sans: ['"Inter"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         maven: ['"Maven Pro"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
