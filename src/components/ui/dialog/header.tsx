@@ -6,7 +6,7 @@ export const DialogHeader = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
+  <header
     className={cn(
       'flex flex-col space-y-1 text-center sm:text-left',
       className,

@@ -2,11 +2,16 @@ import * as React from 'react'
 
 import { cn } from '@/lib/utils'
 
+interface CardDescriptionProps
+  extends React.HTMLAttributes<HTMLParagraphElement> {
+  as?: React.ElementType
+}
+
 export const CardDescription = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
+  HTMLParagraphElement,
+  CardDescriptionProps
+>(({ as: Component = 'p', className, ...props }, ref) => (
+  <Component
     ref={ref}
     className={cn('text-sm text-muted-foreground', className)}
     {...props}

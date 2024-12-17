@@ -6,7 +6,7 @@ export const AlertDialogHeader = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
+  <header
     className={cn(
       'flex flex-col space-y-3 text-center sm:text-left',
       className,

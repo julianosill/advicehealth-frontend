@@ -4,9 +4,9 @@ import { cn } from '@/lib/utils'
 
 export const CardTitle = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
+  React.HTMLAttributes<HTMLHeadingElement>
 >(({ className, ...props }, ref) => (
-  <div
+  <h3
     ref={ref}
     className={cn('font-maven text-xl font-medium leading-none', className)}
     {...props}
