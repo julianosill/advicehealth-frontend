@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite & npm run dev:server",
     "dev:front-end": "vite",
-    "dev:server": "json-server database.json",
+    "dev:server": "json-server database.json -p 3333",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
