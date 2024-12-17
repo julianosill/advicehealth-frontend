@@ -31,9 +31,9 @@ export function DoctorSlots() {
             const { id, datetime, patient } = slot
 
             return (
-              <Card
+              <Card.Root
                 key={id}
-                className='flex min-h-16 items-center gap-3 py-2 leading-none lg:gap-6'
+                className='flex min-h-16 items-center gap-3 px-4 py-2 leading-none lg:gap-6'
               >
                 <div className='text-xl text-muted-foreground'>
                   {formatTime(datetime)}
@@ -65,7 +65,7 @@ export function DoctorSlots() {
                     </Button>
                   </div>
                 )}
-              </Card>
+              </Card.Root>
             )
           })}
       </div>
