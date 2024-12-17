@@ -12,7 +12,7 @@ export function DailyAppointmentList() {
   }
 
   return (
-    <div className='flex max-h-80 flex-col gap-2 overflow-x-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-zinc-500/50'>
+    <div className='flex max-h-[28rem] flex-col gap-2 overflow-x-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-zinc-500/50'>
       {dailyAppointments.length > 0 ? (
         dailyAppointments.map(appointment => (
           <DailyAppointmentItem
