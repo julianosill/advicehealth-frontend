@@ -1,5 +1,7 @@
 export const ROUTES = {
   dashboard: '/',
-  schedule: '/agendar',
+  schedule: '/agenda',
+  newSchedule: '/agenda/registrar',
+  editSchedule: '/agenda/editar',
   appointments: '/agendamentos',
 }

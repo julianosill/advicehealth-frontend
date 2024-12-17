@@ -1,42 +1,39 @@
 import { CircleCheck } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
+import { useSchedule } from '@/hooks'
 import { cn } from '@/lib/utils'
-import type { DoctorType } from '@/types'
 
 import { Avatar } from '../ui/avatar'
+import { DoctorListSkeleton } from './doctor-list-skeleton'
 
-interface DoctorsListProps {
-  doctors?: DoctorType[]
-  selectedDoctorId: string | null
-  onSelect: (doctorId: string) => Promise<void>
-}
+export function DoctorList() {
+  const {
+    doctorList,
+    doctor: selectedDoctor,
+    handleSelectDoctor,
+  } = useSchedule()
 
-export function DoctorList({
-  doctors,
-  selectedDoctorId,
-  onSelect,
-}: DoctorsListProps) {
   return (
-    <div className='flex max-h-72 flex-col gap-2 overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-zinc-500/50'>
-      {doctors &&
-        doctors.map(doctor => {
-          const isSelected = selectedDoctorId === doctor.id
+    <div className='flex max-h-80 flex-col gap-2 overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-zinc-500/50'>
+      {doctorList &&
+        doctorList.map(doctor => {
+          const isSelected = selectedDoctor?.id === doctor.id
 
           return (
             <Button
               key={doctor.id}
               variant='outline'
               className={cn(
-                'h-fit w-full justify-start gap-3 rounded-lg px-4 py-2',
+                'h-fit min-h-16 w-full justify-start gap-3 rounded-lg px-4 py-2',
                 isSelected && 'border-primary bg-primary/10',
               )}
-              onClick={() => onSelect(doctor.id)}
+              onClick={() => handleSelectDoctor(doctor)}
             >
               <Avatar />
-              <div className='flex flex-col items-start font-normal'>
+              <div className='flex flex-col items-start font-medium'>
                 <p className='text-base'>{doctor.name}</p>
-                <span className='text-xs text-muted-foreground'>
+                <span className='font-sans text-xs text-muted-foreground'>
                   {doctor.specialty}
                 </span>
               </div>
@@ -49,6 +46,8 @@ export function DoctorList({
             </Button>
           )
         })}
+
+      {!doctorList && <DoctorListSkeleton />}
     </div>
   )
 }

@@ -11,9 +11,11 @@ export async function fetchDoctorSlots({
   doctorId,
   date,
 }: FetchDoctorSlotsProps): Promise<SlotType[]> {
-  await wait(200)
+  await wait()
 
-  const response = await api.get(`/appointments?doctorId=${doctorId}`)
+  const response = await api.get(
+    `/appointments?doctorId=${doctorId}&status_ne=canceled`,
+  )
 
   const schedule: AppointmentType[] = response.data
 

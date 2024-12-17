@@ -1,7 +1,13 @@
 import { createBrowserRouter } from 'react-router'
 
 import { AppLayout } from '@/layouts/app'
-import { Appointments, Dashboard, SchedulePage } from '@/pages'
+import {
+  Appointments,
+  Dashboard,
+  EditSchedulePage,
+  NewSchedulePage,
+  SchedulePage,
+} from '@/pages'
 
 export const router = createBrowserRouter([
   {
@@ -9,7 +15,14 @@ export const router = createBrowserRouter([
     element: <AppLayout />,
     children: [
       { path: '/', element: <Dashboard /> },
-      { path: '/agendar', element: <SchedulePage /> },
+      {
+        path: '/agenda',
+        children: [
+          { path: '', element: <SchedulePage /> },
+          { path: 'registrar', element: <NewSchedulePage /> },
+          { path: 'editar/:id', element: <EditSchedulePage /> },
+        ],
+      },
       { path: '/agendamentos', element: <Appointments /> },
     ],
   },

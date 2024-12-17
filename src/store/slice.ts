@@ -1,16 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import type { SlotType } from '@/types'
+import type { DoctorType, SlotType } from '@/types'
+
+type Doctor = Omit<DoctorType, 'specialty'>
 
 export interface StoreState {
   date: string
-  doctorId: string | null
-  doctorSlots: SlotType[]
+  doctor: Doctor | null
+  doctorSlots: SlotType[] | []
 }
 
 const initialState: StoreState = {
   date: new Date().toISOString(),
-  doctorId: null,
+  doctor: null,
   doctorSlots: [],
 }
 
@@ -21,14 +23,11 @@ export const storeSlice = createSlice({
     setDate: (state, action: PayloadAction<string>) => {
       state.date = action.payload
     },
-    selectDoctor: (state, action: PayloadAction<string>) => {
-      state.doctorId = action.payload
-    },
-    selectDoctorSlots: (state, action: PayloadAction<SlotType[]>) => {
-      state.doctorSlots = action.payload
+    setDoctor: (state, action: PayloadAction<Doctor>) => {
+      state.doctor = action.payload
     },
   },
 })
 
 export const storeReducer = storeSlice.reducer
-export const { setDate, selectDoctor, selectDoctorSlots } = storeSlice.actions
+export const { setDate, setDoctor } = storeSlice.actions

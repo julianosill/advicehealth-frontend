@@ -1,57 +1,66 @@
-import { ClipboardPen, ClipboardPlus, Search, Trash2 } from 'lucide-react'
+import { ClipboardPlus } from 'lucide-react'
 
+import {
+  CancelAppointmentButton,
+  EditAppointmentButton,
+  ShowAppointmentButton,
+} from '@/components'
 import { Alert } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { formatDate, formatTime } from '@/helpers'
-import type { SlotType } from '@/types'
+import { useSchedule } from '@/hooks'
 
 import { Avatar } from '../ui/avatar'
+import { SectionTitle } from '../ui/section-title'
+import { DoctorSlotsSkeleton } from './doctor-slots-skeleton'
 
-interface DoctorSlotsProps {
-  doctorId?: string | null
-  date: Date | string
-  slots: SlotType[]
-}
+export function DoctorSlots() {
+  const { slots, date, doctor, handleSelectSlot } = useSchedule()
 
-export function DoctorSlots({ doctorId, date, slots }: DoctorSlotsProps) {
+  const showSlots = slots && slots.length >= 0
+  const showSkeleton = !!doctor && !slots
+
   return (
     <section className='flex-1'>
-      <h2 className='pb-4 font-maven text-xl font-medium'>
-        {formatDate(date, { dateStyle: 'long' })}
-      </h2>
+      <SectionTitle>{formatDate(date, { dateStyle: 'long' })}</SectionTitle>
 
-      {slots.length > 0 && (
-        <div className='space-y-2'>
-          {slots.map(slot => {
+      <div className='space-y-2'>
+        {showSlots &&
+          slots.map(slot => {
             const { id, datetime, patient } = slot
 
             return (
-              <Card key={id} className='flex items-center gap-6 leading-none'>
+              <Card
+                key={id}
+                className='flex min-h-16 items-center gap-3 py-2 leading-none lg:gap-6'
+              >
                 <div className='text-xl text-muted-foreground'>
                   {formatTime(datetime)}
                 </div>
                 {patient ? (
                   <>
                     <div className='flex items-center gap-2'>
-                      <Avatar />
+                      <Avatar className='max-lg:hidden' />
                       <p className='leading-tight'>{patient.name}</p>
                     </div>
-                    <div className='ml-auto space-x-2'>
-                      <Button variant='outline' size='icon'>
-                        <Search className='size-4' />
-                      </Button>
-                      <Button variant='outline' size='icon'>
-                        <ClipboardPen className='size-4' />
-                      </Button>
-                      <Button variant='outline' size='icon'>
-                        <Trash2 className='size-4 text-red-600' />
-                      </Button>
+                    <div className='ml-auto space-x-2 whitespace-nowrap'>
+                      <ShowAppointmentButton id={id} />
+                      <EditAppointmentButton id={id} />
+                      <CancelAppointmentButton
+                        id={id}
+                        datetime={datetime}
+                        patientName={patient.name}
+                      />
                     </div>
                   </>
                 ) : (
                   <div className='ml-auto space-x-2'>
-                    <Button variant='outline' size='icon'>
+                    <Button
+                      variant='outline'
+                      size='icon'
+                      onClick={() => handleSelectSlot(slot.datetime)}
+                    >
                       <ClipboardPlus className='size-4' />
                     </Button>
                   </div>
@@ -59,10 +68,11 @@ export function DoctorSlots({ doctorId, date, slots }: DoctorSlotsProps) {
               </Card>
             )
           })}
-        </div>
-      )}
+      </div>
 
-      {!doctorId && (
+      {showSkeleton && <DoctorSlotsSkeleton />}
+
+      {!doctor && (
         <Alert.Root>
           <Alert.Title>Médico(a) não selecionado(a)</Alert.Title>
           <Alert.Description>

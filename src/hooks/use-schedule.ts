@@ -1,45 +1,54 @@
 import { useQuery } from '@tanstack/react-query'
+import { useNavigate } from 'react-router'
 
 import { fetchDoctors, fetchDoctorSlots } from '@/api'
+import { QUERY_KEYS } from '@/constants'
+import { ROUTES } from '@/routes'
 import { useAppDispatch, useAppSelector } from '@/store'
-import { selectDoctor, selectDoctorSlots, setDate } from '@/store/slice'
+import { setDate, setDoctor } from '@/store/slice'
+import type { DoctorType } from '@/types'
 
 export function useSchedule() {
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
-  const { data: doctors } = useQuery({
-    queryKey: ['doctors'],
+  const date = useAppSelector(state => state.storeReducer.date)
+  const doctor = useAppSelector(state => state.storeReducer.doctor)
+  const doctorId = doctor?.id ?? ''
+
+  const { data: doctorList } = useQuery({
+    queryKey: [QUERY_KEYS.doctorList],
     queryFn: () => fetchDoctors(),
   })
 
-  const selectedDate = useAppSelector(state => state.storeReducer.date)
-  const selectedDoctorId = useAppSelector(state => state.storeReducer.doctorId)
-  const slots = useAppSelector(state => state.storeReducer.doctorSlots)
+  const { data: slots } = useQuery({
+    queryKey: [QUERY_KEYS.doctorSlots, doctorId, date],
+    queryFn: () => fetchDoctorSlots({ date, doctorId: doctorId }),
+    enabled: !!doctor && !!date,
+  })
 
-  async function handleSelectDate(date?: Date) {
-    if (!date) return
-    const dateIsoString = date.toISOString()
+  async function handleSelectDate(selectedDate?: Date) {
+    if (!selectedDate) return
+    const dateIsoString = selectedDate.toISOString()
     dispatch(setDate(dateIsoString))
-    if (selectedDoctorId) selectSlots(selectedDoctorId, dateIsoString)
   }
 
-  async function handleSelectDoctor(doctorId: string) {
-    dispatch(selectDoctor(doctorId))
-    await selectSlots(doctorId, selectedDate)
+  async function handleSelectDoctor(selectedDoctor: DoctorType) {
+    dispatch(setDoctor(selectedDoctor))
   }
 
-  async function selectSlots(doctorId: string, date: string) {
-    dispatch(selectDoctorSlots([]))
-    const slots = await fetchDoctorSlots({ doctorId, date })
-    dispatch(selectDoctorSlots(slots))
+  function handleSelectSlot(selectedDate: string) {
+    dispatch(setDate(selectedDate))
+    navigate(ROUTES.newSchedule)
   }
 
   return {
-    doctors,
+    date,
+    doctor,
+    doctorList,
     slots,
-    selectedDate,
-    selectedDoctorId,
     handleSelectDate,
     handleSelectDoctor,
+    handleSelectSlot,
   }
 }
