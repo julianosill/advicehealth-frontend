@@ -11,7 +11,7 @@ export const buttonVariants = cva(
         ghost: 'text-foreground hover:bg-accent hover:text-accent-foreground',
         destructive:
           'bg-destructive text-destructive-foreground hover:bg-destructive/90',
-        link: 'rounded-none border-b font-sans text-sm hover:border-accent-foreground hover:text-accent-foreground focus-visible:rounded-lg',
+        link: 'w-fit rounded-none border-b font-sans text-sm hover:border-accent-foreground hover:text-accent-foreground focus-visible:rounded-lg',
       },
       size: {
         default: 'h-10 px-4 py-2',
