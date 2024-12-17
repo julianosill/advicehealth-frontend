@@ -1,4 +1,5 @@
 // Global
+export { capitalizeFirstLetter } from './capitalize-first-letter'
 export { wait } from './wait'
 
 // Formatters
