@@ -6,6 +6,7 @@ import { fetchAppointments } from '@/api/fetch-appointments'
 import { Page } from '@/components/page'
 import { Pagination } from '@/components/pagination'
 import { Table } from '@/components/ui/table'
+import { QUERY_KEYS } from '@/constants'
 
 import { AppointmentsTableBody } from './_components/appointments-table-body'
 import { AppointmentsTableSkeleton } from './_components/appointments-table-skeleton'
@@ -19,7 +20,7 @@ export function Appointments() {
     .parse(searchParams.get('page') ?? '1')
 
   const { data } = useQuery({
-    queryKey: ['appointments', pageIndex],
+    queryKey: [QUERY_KEYS.appointmentList, pageIndex],
     queryFn: () => fetchAppointments({ pageIndex }),
   })
 
@@ -52,6 +53,7 @@ export function Appointments() {
             <Table.Head className='w-80'>Médico(a)</Table.Head>
             <Table.Head className='w-32'>Dia</Table.Head>
             <Table.Head className='w-24'>Horário</Table.Head>
+            <Table.Head className='w-28'>Status</Table.Head>
             <Table.Head className='w-32'>Valor</Table.Head>
             <Table.Head className='w-28'>Ações</Table.Head>
           </Table.Row>
