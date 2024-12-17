@@ -3,7 +3,7 @@ import { createBrowserRouter } from 'react-router'
 import { AppLayout } from '@/layouts/app'
 import {
   AppointmentsPage,
-  Dashboard,
+  DashboardPage,
   EditSchedulePage,
   NewSchedulePage,
   SchedulePage,
@@ -14,7 +14,7 @@ export const router = createBrowserRouter([
     path: '/',
     element: <AppLayout />,
     children: [
-      { path: '/', element: <Dashboard /> },
+      { path: '/', element: <DashboardPage /> },
       {
         path: '/agenda',
         children: [
