@@ -1,22 +1,24 @@
 import { NotebookPen } from 'lucide-react'
 
 import { Table } from '@/components/ui/table'
-import { REMINDER_PRIORITY_TYPE, type ReminderType } from '@/types'
+import { useDashboard } from '@/hooks'
+import { REMINDER_PRIORITY_TYPE } from '@/types'
 
 import { Button } from '../ui/button'
+import { RemindersTableBodySkeleton } from './reminders-table-body-skeleton'
 
-interface RemindersTableBodyProps {
-  reminders: ReminderType[]
-}
+export function RemindersTableBody() {
+  const { reminders } = useDashboard()
 
-export function RemindersTableBody({
-  reminders,
-}: Readonly<RemindersTableBodyProps>) {
   const priorityColor = {
-    low: 'text-muted-foreground',
-    normal: 'text-sky-600',
-    high: 'text-red-600',
+    0: 'text-muted-foreground',
+    1: 'text-sky-600',
+    2: 'text-red-600',
   } as const
+
+  if (!reminders) {
+    return <RemindersTableBodySkeleton />
+  }
 
   return (
     <Table.Body>

@@ -13,5 +13,9 @@ export async function fetchReminders(): Promise<FetchRemindersResponse> {
 
   const reminders: ReminderType[] = response.data
 
-  return { reminders }
+  const orderRemindersByPriority = reminders.sort(
+    (a, b) => b.priority - a.priority,
+  )
+
+  return { reminders: orderRemindersByPriority }
 }

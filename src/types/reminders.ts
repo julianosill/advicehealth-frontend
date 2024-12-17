@@ -1,7 +1,7 @@
 export const REMINDER_PRIORITY_TYPE = {
-  low: 'Baixa',
-  normal: 'Normal',
-  high: 'Alta',
+  0: 'Baixa',
+  1: 'Normal',
+  2: 'Alta',
 } as const
 
 type ReminderPriorityType = keyof typeof REMINDER_PRIORITY_TYPE
