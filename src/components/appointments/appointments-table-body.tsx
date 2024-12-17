@@ -5,19 +5,13 @@ import {
   ShowAppointmentButton,
 } from '@/components'
 import { Table } from '@/components/ui/table'
+import { STATUS_COLOR } from '@/constants'
 import { formatCurrency, formatDate, formatTime } from '@/helpers'
 import { useAppointmentPage } from '@/hooks'
 import { APPOINTMENT_STATUS_TYPE } from '@/types'
 
 export function AppointmentsTableBody() {
   const { appointments, isFetching } = useAppointmentPage()
-
-  const statusColor = {
-    pending: 'text-muted-foreground',
-    confirmed: 'text-sky-600',
-    completed: 'text-green-600',
-    canceled: 'text-red-600',
-  } as const
 
   if (isFetching) {
     return <AppointmentsTableBodySkeleton />
@@ -42,7 +36,7 @@ export function AppointmentsTableBody() {
               <Table.Cell>{name}</Table.Cell>
               <Table.Cell>{doctorName}</Table.Cell>
               <Table.Cell>{formattedDatetime}</Table.Cell>
-              <Table.Cell className={statusColor[status]}>
+              <Table.Cell className={STATUS_COLOR[status]}>
                 {APPOINTMENT_STATUS_TYPE[status]}
               </Table.Cell>
               <Table.Cell>{formatCurrency(priceInCents)}</Table.Cell>

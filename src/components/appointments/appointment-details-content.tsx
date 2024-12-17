@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 
 import { getAppointment } from '@/api'
-import { QUERY_KEYS } from '@/constants'
+import { QUERY_KEYS, STATUS_COLOR } from '@/constants'
 import { formatCurrency, formatDate, formatTime } from '@/helpers'
 import { APPOINTMENT_STATUS_TYPE } from '@/types'
 
@@ -31,7 +31,7 @@ export function AppointmentDetailsContent({
   return (
     <Dialog.Content>
       <Dialog.Header>
-        <Dialog.Title>Agendamento</Dialog.Title>
+        <Dialog.Title>Detalhes do agendamento</Dialog.Title>
         <Dialog.Description>
           Confira os detalhes do agendamento abaixo.
         </Dialog.Description>
@@ -62,6 +62,7 @@ export function AppointmentDetailsContent({
           <AppointmentDetailsField
             label='Status:'
             content={APPOINTMENT_STATUS_TYPE[appointment.status]}
+            className={STATUS_COLOR[appointment.status]}
           />
         </section>
         <Separator className='bg-muted-foreground/50' />

@@ -9,3 +9,4 @@ export {
   PHONE_REGEX,
   SPECIAL_CHARS_REGEX,
 } from './regex'
+export { STATUS_COLOR } from './status-color'

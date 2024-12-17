@@ -1,3 +1,4 @@
+import { STATUS_COLOR } from '@/constants'
 import { useAppointmentPage } from '@/hooks'
 
 import { Select } from '../ui/select'
@@ -12,13 +13,6 @@ export function StatusSelect() {
     { value: 'canceled', text: 'Cancelado' },
   ] as const
 
-  const statusColor = {
-    pending: 'text-muted-foreground',
-    confirmed: 'text-sky-600',
-    completed: 'text-green-600',
-    canceled: 'text-red-600',
-  } as const
-
   return (
     <Select.Root value={statusQuery} onValueChange={handleSelectStatus}>
       <Select.Trigger className='max-w-48'>
@@ -29,7 +23,7 @@ export function StatusSelect() {
           <Select.Item
             key={status.value}
             value={status.value}
-            className={statusColor[status.value]}
+            className={STATUS_COLOR[status.value]}
           >
             {status.text}
           </Select.Item>
