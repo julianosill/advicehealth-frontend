@@ -3,9 +3,11 @@ interface OptionsProps {
 }
 
 export function formatCurrency(
-  value: number | string,
+  value?: number | string,
   options: OptionsProps = { toDecimals: true },
 ) {
+  if (!value) return
+
   const { toDecimals = true } = options
   const filteredNumbers = String(value).replace(/\D/g, '')
 
