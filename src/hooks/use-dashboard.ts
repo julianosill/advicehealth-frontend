@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 
 import {
   fetchDailyAppointments,
+  fetchReminders,
   getDailyStatistics,
   getWeeklyStatistics,
 } from '@/api'
@@ -16,9 +17,9 @@ export function useDashboard() {
   const date = useAppSelector(state => state.storeReducer.date)
   const dateToday = formatDate(new Date(), { dateStyle: 'full' })
 
-  const { data: result } = useQuery({
-    queryKey: [QUERY_KEYS.appointmentList, date],
-    queryFn: () => fetchDailyAppointments({ datetime: date }),
+  const { data: fetchRemindersResult } = useQuery({
+    queryKey: [QUERY_KEYS.reminderList, dateToday],
+    queryFn: () => fetchReminders(),
   })
 
   const { data: dailyStatisticsResult } = useQuery({
@@ -31,9 +32,15 @@ export function useDashboard() {
     queryFn: () => getWeeklyStatistics(),
   })
 
+  const { data: result } = useQuery({
+    queryKey: [QUERY_KEYS.appointmentList, date],
+    queryFn: () => fetchDailyAppointments({ datetime: date }),
+  })
+
   const dailyStatistics = dailyStatisticsResult?.statistics
   const weeklyStatistics = weeklyStatisticsResult?.statistics
   const dailyAppointments = result?.appointments
+  const reminders = fetchRemindersResult?.reminders
 
   async function handleSelectDate(selectedDate?: Date) {
     if (!selectedDate) return
@@ -46,6 +53,7 @@ export function useDashboard() {
     date,
     dailyStatistics,
     weeklyStatistics,
+    reminders,
     handleSelectDate,
     dailyAppointments,
   }

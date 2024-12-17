@@ -1,5 +1,4 @@
-import { capitalizeFirstLetter } from '@/helpers'
-import { useReminder } from '@/hooks'
+import { useDashboard } from '@/hooks'
 import { cn } from '@/lib/utils'
 
 import { Card } from '../ui/card'
@@ -11,13 +10,12 @@ export function RemindersCard({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
-  const { today, reminders } = useReminder()
+  const { reminders } = useDashboard()
 
   return (
     <Card.Root className={cn(className)} {...props}>
       <Card.Header>
         <Card.Title>Lembretes</Card.Title>
-        <Card.Description>{capitalizeFirstLetter(today)}</Card.Description>
       </Card.Header>
 
       <Card.Content>
