@@ -1,4 +1,5 @@
 export { useAppointment } from './use-appointment'
 export { useAppointmentPage } from './use-appointment-page'
+export { useReminder } from './use-reminder'
 export { useSchedule } from './use-schedule'
 export { useScheduleForm } from './use-schedule-form'

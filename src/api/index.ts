@@ -1,3 +1,6 @@
+// Reminders
+export { fetchReminders } from './reminders/fetch-reminders'
+
 // Schedule
 export { fetchDoctorSlots } from './doctors/fetch-doctor-slots'
 export { fetchDoctors } from './doctors/fetch-doctors'
