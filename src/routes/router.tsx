@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router'
 
 import { AppLayout } from '@/layouts/app'
 import {
-  Appointments,
+  AppointmentsPage,
   Dashboard,
   EditSchedulePage,
   NewSchedulePage,
@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
           { path: 'editar/:id', element: <EditSchedulePage /> },
         ],
       },
-      { path: '/agendamentos', element: <Appointments /> },
+      { path: '/agendamentos', element: <AppointmentsPage /> },
     ],
   },
 ])
