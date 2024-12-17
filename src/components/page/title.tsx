@@ -8,7 +8,12 @@ interface PageTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {
 
 export function PageTitle({ children, className }: Readonly<PageTitleProps>) {
   return (
-    <h1 className={cn('font-maven text-3xl font-medium', className)}>
+    <h1
+      className={cn(
+        'font-maven text-3xl font-medium text-accent-foreground',
+        className,
+      )}
+    >
       {children}
     </h1>
   )

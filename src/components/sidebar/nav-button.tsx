@@ -14,7 +14,7 @@ export function NavButton({ to, title, icon: Icon }: NavButtonProps) {
     <Link
       to={to}
       data-active={pathname === to}
-      className='font-maven group flex items-center gap-3 rounded-l-lg px-3 py-2 transition-colors hover:bg-primary hover:text-primary-foreground data-[active=true]:bg-white data-[active=true]:hover:bg-primary'
+      className='group flex items-center gap-3 rounded-l-lg px-3 py-2 font-maven transition-colors data-[active=true]:bg-white hover:bg-primary hover:text-primary-foreground data-[active=true]:hover:bg-primary'
     >
       <Icon className='size-5' />
       <span className='group-data-[active=true]:font-medium'>{title}</span>
