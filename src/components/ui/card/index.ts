@@ -3,6 +3,7 @@ import { CardDescription } from './description'
 import { CardFooter } from './footer'
 import { CardHeader } from './header'
 import { CardRoot } from './root'
+import { CardSubTitle } from './subtitle'
 import { CardTitle } from './title'
 
 export const Card = {
@@ -12,4 +13,5 @@ export const Card = {
   Footer: CardFooter,
   Header: CardHeader,
   Title: CardTitle,
+  SubTitle: CardSubTitle,
 }
