@@ -4,13 +4,12 @@ import { cn } from '@/lib/utils'
 import { Calendar } from '../ui/calendar'
 import { Card } from '../ui/card'
 import { DailyAppointmentList } from './daily-appointment-list'
-import { DailyAppointmentListSkeleton } from './daily-appointment-list-skeleton'
 
 export function AppointmentsCard({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
-  const { date, handleSelectDate, dailyAppointments } = useDashboard()
+  const { date, handleSelectDate } = useDashboard()
 
   return (
     <Card.Root className={cn('w-[23rem]', className)} {...props}>
@@ -24,12 +23,7 @@ export function AppointmentsCard({
           selected={new Date(date)}
           onSelect={handleSelectDate}
         />
-
-        {dailyAppointments ? (
-          <DailyAppointmentList appointments={dailyAppointments} />
-        ) : (
-          <DailyAppointmentListSkeleton />
-        )}
+        <DailyAppointmentList />
       </Card.Content>
     </Card.Root>
   )
