@@ -1,4 +1,5 @@
 // Dashboard
+export { AppointmentsCard } from './dashboard/appointments-card'
 export { RemindersCard } from './dashboard/reminders-card'
 
 // Schedule
