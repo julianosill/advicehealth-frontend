@@ -1,6 +1,7 @@
 // Dashboard
 export { AppointmentsCard } from './dashboard/appointments-card'
 export { RemindersCard } from './dashboard/reminders-card'
+export { StatisticsCard } from './dashboard/statistics-card'
 
 // Schedule
 export { DoctorList } from './schedule/doctor-list'

@@ -1,4 +1,6 @@
-// Reminders
+// Dashboard
+export { getDailyStatistics } from './dashboard/get-daily-statistics'
+export { getWeeklyStatistics } from './dashboard/get-weekly-statistics'
 export { fetchReminders } from './reminders/fetch-reminders'
 
 // Schedule
