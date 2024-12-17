@@ -1,4 +1,5 @@
 export {
+  APPOINTMENT_QUERIES,
   APPOINTMENT_STATUS_TYPE,
   type AppointmentType,
   type NewAppointmentType,

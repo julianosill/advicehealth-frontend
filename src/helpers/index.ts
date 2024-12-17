@@ -1,5 +1,6 @@
 // Global
 export { capitalizeFirstLetter } from './capitalize-first-letter'
+export { normalizeText } from './normalize-text'
 export { wait } from './wait'
 
 // Formatters
@@ -19,3 +20,10 @@ export {
   type ScheduleFormSchema,
   scheduleFormSchema,
 } from './schedule-form-validation'
+
+// Validations
+export {
+  searchAppointmentFormDefaultValues,
+  type SearchAppointmentFormSchema,
+  searchAppointmentFormSchema,
+} from './search-appointment-form-validation'

@@ -33,7 +33,7 @@ export function ScheduleForm({
     <Form.Root {...form}>
       <Form.Wrapper
         onSubmit={handleSubmit(submitForm)}
-        className={cn('', className)}
+        className={cn(className)}
         {...props}
       >
         <Form.Field

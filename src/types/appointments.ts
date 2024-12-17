@@ -1,3 +1,10 @@
+export const APPOINTMENT_QUERIES = {
+  page: 'page',
+  search: 'search',
+  doctorId: 'doctor',
+  status: 'status',
+} as const
+
 export const APPOINTMENT_STATUS_TYPE = {
   pending: 'Pendente',
   confirmed: 'Confirmado',

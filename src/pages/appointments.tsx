@@ -1,6 +1,7 @@
 import {
   AppointmentsTableBody,
   AppointmentsTableBodySkeleton,
+  SearchAppointmentsForm,
 } from '@/components'
 import { Page } from '@/components/page'
 import { Pagination } from '@/components/pagination'
@@ -16,6 +17,8 @@ export function AppointmentsPage() {
       <Page.Header>
         <Page.Title>Agendamentos</Page.Title>
       </Page.Header>
+
+      <SearchAppointmentsForm />
 
       <Table.Root className='min-w-[40rem]'>
         <Table.Header>
