@@ -5,10 +5,10 @@ import { useForm } from 'react-hook-form'
 import { useSearchParams } from 'react-router'
 import { z } from 'zod'
 
+import { fetchDoctors } from '@/api'
 import { fetchAppointments } from '@/api/appointments/fetch-appointments'
 import { QUERY_KEYS } from '@/constants'
 import {
-  searchAppointmentFormDefaultValues,
   type SearchAppointmentFormSchema,
   searchAppointmentFormSchema,
 } from '@/helpers'
@@ -28,12 +28,17 @@ export function useAppointmentPage() {
 
   const form = useForm<SearchAppointmentFormSchema>({
     resolver: zodResolver(searchAppointmentFormSchema),
-    defaultValues: searchAppointmentFormDefaultValues,
+    values: { search: searchQuery },
   })
 
-  const { setValue, reset, handleSubmit } = form
+  const { setValue, handleSubmit } = form
 
-  const { data: appointmentList } = useQuery({
+  const { data: doctorList } = useQuery({
+    queryKey: [QUERY_KEYS.doctorList],
+    queryFn: () => fetchDoctors(),
+  })
+
+  const { data: appointmentList, isFetching } = useQuery({
     queryKey: [
       QUERY_KEYS.appointmentList,
       pageIndex,
@@ -57,8 +62,21 @@ export function useAppointmentPage() {
     })
   }
 
+  function handleSelectDoctor(doctorId: string) {
+    setSearchParams(state => {
+      if (doctorId) state.set(APPOINTMENT_QUERIES.doctorId, doctorId)
+      return state
+    })
+  }
+
+  function handleSelectStatus(status: string) {
+    setSearchParams(state => {
+      if (status) state.set(APPOINTMENT_QUERIES.status, status)
+      return state
+    })
+  }
+
   function handleClearFilters() {
-    reset(searchAppointmentFormDefaultValues)
     setSearchParams('')
   }
 
@@ -74,7 +92,7 @@ export function useAppointmentPage() {
     })
   }
 
-  const showClearButton = searchQuery || doctorQuery || statusQuery
+  const showClearFilter = searchQuery || doctorQuery || statusQuery
   const appointments = appointmentList?.appointments
   const currentItems = appointmentList?.appointments.length ?? 0
   const totalItems = appointmentList?.metadata.totalCount ?? 0
@@ -86,14 +104,20 @@ export function useAppointmentPage() {
 
   return {
     appointments,
-    pageIndex,
     currentItems,
-    totalItems,
-    showClearButton,
-    handleSubmit,
-    handleSearch,
+    doctorList,
+    doctorQuery,
+    form,
     handleClearFilters,
     handlePaginate,
-    form,
+    handleSearch,
+    handleSelectDoctor,
+    handleSelectStatus,
+    handleSubmit,
+    isFetching,
+    pageIndex,
+    showClearFilter,
+    statusQuery,
+    totalItems,
   }
 }

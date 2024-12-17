@@ -1,4 +1,4 @@
-import { Search, X } from 'lucide-react'
+import { Search } from 'lucide-react'
 
 import { formatName } from '@/helpers/format-name'
 import { useAppointmentPage } from '@/hooks'
@@ -8,30 +8,24 @@ import { Button } from '../ui/button'
 import { Form } from '../ui/form'
 import { Input } from '../ui/input'
 
-export function SearchAppointmentsForm({
+export function SearchForm({
   className,
   ...props
 }: React.HTMLAttributes<HTMLFormElement>) {
-  const {
-    form,
-    showClearButton,
-    handleSubmit,
-    handleSearch,
-    handleClearFilters,
-  } = useAppointmentPage()
+  const { form, handleSubmit, handleSearch } = useAppointmentPage()
 
   return (
     <Form.Root {...form}>
       <Form.Wrapper
         onSubmit={handleSubmit(handleSearch)}
-        className={cn('flex flex-row justify-start gap-2 pb-4', className)}
+        className={cn('flex w-full max-w-72 flex-row gap-2', className)}
         {...props}
       >
         <Form.Field
           name='search'
           control={form.control}
           render={({ field }) => (
-            <Form.Item className='w-full max-w-80'>
+            <Form.Item className='relative flex-1'>
               <Form.Control>
                 <Input
                   placeholder='Insira o nome do paciente'
@@ -43,36 +37,15 @@ export function SearchAppointmentsForm({
                   }}
                 />
               </Form.Control>
-              <Form.Message />
+              <Form.Message className='absolute top-10' />
             </Form.Item>
           )}
         />
 
-        <Button type='submit'>
+        <Button type='submit' className='w-12'>
           <Search className='size-6' />
           <span className='sr-only'>Pesquisar</span>
         </Button>
-
-        {showClearButton && (
-          <Button type='button' variant='ghost' onClick={handleClearFilters}>
-            <X className='size-6' />
-            Limpar filtros
-          </Button>
-        )}
-
-        {/* <Button type='submit' size='lg' disabled={isSubmitting}>
-          {isSubmitting ? (
-            <>
-              <Loader2 className='size-6 animate-spin' />
-              Salvando...
-            </>
-          ) : (
-            <>
-              <ClipboardCheck className='size-6' />
-              Salvar
-            </>
-          )}
-        </Button> */}
       </Form.Wrapper>
     </Form.Root>
   )

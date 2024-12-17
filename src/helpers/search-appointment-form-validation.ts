@@ -7,7 +7,6 @@ export const searchAppointmentFormSchema = z.object({
     .string()
     .min(3, 'Digite pelo menos 3 letras')
     .optional()
-    .or(z.literal(''))
     .transform(data => normalizeText(data)),
 })
 
