@@ -58,6 +58,7 @@ export function useAppointmentPage() {
   function handleSearch({ search }: SearchAppointmentFormSchema) {
     setSearchParams(state => {
       if (search) state.set(APPOINTMENT_QUERIES.search, search)
+      state.delete('page')
       return state
     })
   }
@@ -65,6 +66,7 @@ export function useAppointmentPage() {
   function handleSelectDoctor(doctorId: string) {
     setSearchParams(state => {
       if (doctorId) state.set(APPOINTMENT_QUERIES.doctorId, doctorId)
+      state.delete('page')
       return state
     })
   }
@@ -72,6 +74,7 @@ export function useAppointmentPage() {
   function handleSelectStatus(status: string) {
     setSearchParams(state => {
       if (status) state.set(APPOINTMENT_QUERIES.status, status)
+      state.delete('page')
       return state
     })
   }
@@ -99,6 +102,7 @@ export function useAppointmentPage() {
 
   useEffect(() => {
     if (searchQuery) setValue('search', searchQuery)
+    if (pageIndex && !appointments) handleClearFilters()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
