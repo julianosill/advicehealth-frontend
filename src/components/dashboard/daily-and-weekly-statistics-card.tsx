@@ -13,7 +13,7 @@ export function DailyAndWeeklyStatisticsCard({
   const { dailyStatistics, weeklyStatistics } = useDashboard()
 
   return (
-    <section className={cn('flex flex-col gap-4', className)} {...props}>
+    <section className={cn('flex flex-col gap-8', className)} {...props}>
       <div className='space-y-3'>
         <Card.SubTitle>Números diários</Card.SubTitle>
         <div className='grid grid-cols-[11rem_1fr_auto] gap-x-3'>

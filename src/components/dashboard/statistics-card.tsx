@@ -2,6 +2,7 @@ import { cn } from '@/lib/utils'
 
 import { Card } from '../ui/card'
 import { DailyAndWeeklyStatisticsCard } from './daily-and-weekly-statistics-card'
+import { WeeklyRevenueChart } from './weekly-revenue-chart'
 
 export function StatisticsCard({
   className,
@@ -13,8 +14,9 @@ export function StatisticsCard({
         <Card.Title>Estatísticas</Card.Title>
       </Card.Header>
 
-      <Card.Content>
-        <DailyAndWeeklyStatisticsCard />
+      <Card.Content className='flex flex-row gap-6'>
+        <WeeklyRevenueChart />
+        <DailyAndWeeklyStatisticsCard className='w-[22rem]' />
       </Card.Content>
     </Card.Root>
   )
