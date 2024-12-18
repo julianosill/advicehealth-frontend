@@ -2,6 +2,8 @@
 
 Aplicação web desenvolvida em `Typescript` e `React` como teste técnico referente à posição de Desenvolvedor Front-End Júnior na `AdviceHealth`.
 
+![advicehealth-webapp](https://github.com/user-attachments/assets/43449d52-e07f-4a1b-b33c-dcab0b276b77)
+
 ## Cenário da aplicação
 
 A aplicação consiste em três telas principais: `Área de Trabalho`, `Agendamento de Consulta` e `Consulta de Agendamentos`. Além dessas, conta com telas de apoio, como registro e alteração de agendamentos.
