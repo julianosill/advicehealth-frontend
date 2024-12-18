@@ -18,7 +18,7 @@ export function StatisticItem({
   value,
   rate,
   invertRateColor,
-}: StatisticCardItemProps) {
+}: Readonly<StatisticCardItemProps>) {
   const showRate = rate || rate === 0
 
   const rateColorOptions = {

@@ -14,7 +14,7 @@ export function Calendar({
   classNames,
   showOutsideDays = true,
   ...props
-}: CalendarProps) {
+}: Readonly<CalendarProps>) {
   return (
     <DayPicker
       locale={ptBR}

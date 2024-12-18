@@ -25,7 +25,7 @@ export function ScheduleForm({
   appointmentId,
   className,
   ...props
-}: ScheduleFormProps) {
+}: Readonly<ScheduleFormProps>) {
   const { form, handleCancel, handleSubmit, submitForm, isSubmitting } =
     useScheduleForm(appointmentId)
 

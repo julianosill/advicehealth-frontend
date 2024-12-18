@@ -2,7 +2,7 @@ import { Link, type LinkProps } from 'react-router'
 
 import { cn } from '@/lib/utils'
 
-export function NavLink({ className, ...props }: LinkProps) {
+export function NavLink({ className, ...props }: Readonly<LinkProps>) {
   return (
     <Link
       className={cn(

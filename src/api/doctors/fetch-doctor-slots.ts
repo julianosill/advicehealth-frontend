@@ -10,7 +10,7 @@ interface FetchDoctorSlotsProps {
 export async function fetchDoctorSlots({
   doctorId,
   date,
-}: FetchDoctorSlotsProps): Promise<SlotType[]> {
+}: Readonly<FetchDoctorSlotsProps>): Promise<SlotType[]> {
   await wait()
 
   const response = await api.get(

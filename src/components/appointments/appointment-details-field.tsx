@@ -13,7 +13,7 @@ export function AppointmentDetailsField({
   content,
   className,
   ...props
-}: AppointmentDetailsFieldProps) {
+}: Readonly<AppointmentDetailsFieldProps>) {
   if (!content) return
 
   return (

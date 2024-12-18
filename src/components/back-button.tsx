@@ -8,7 +8,7 @@ interface BackButtonProps {
   options?: NavigateOptions
 }
 
-export function BackButton({ to, options }: BackButtonProps) {
+export function BackButton({ to, options }: Readonly<BackButtonProps>) {
   const navigate = useNavigate()
 
   function handleNavigate() {

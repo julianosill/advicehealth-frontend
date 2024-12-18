@@ -25,7 +25,7 @@ export function Pagination({
   className,
   onPageChange,
   ...props
-}: PaginationProps) {
+}: Readonly<PaginationProps>) {
   if (currentItems <= 0) return null
 
   const perPage = PER_PAGE

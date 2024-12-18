@@ -17,7 +17,7 @@ type UpdateAppointmentResponse = {
 export async function updateAppointment({
   id,
   data,
-}: UpdateAppointmentProps): Promise<UpdateAppointmentResponse> {
+}: Readonly<UpdateAppointmentProps>): Promise<UpdateAppointmentResponse> {
   const { name, dateOfBirth, cpf, phone, email, address, price, observations } =
     data
 

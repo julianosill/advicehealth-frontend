@@ -19,7 +19,7 @@ export async function registerAppointment({
   data,
   doctor,
   date,
-}: RegisterAppointmentProps): Promise<RegisterAppointmentResponse> {
+}: Readonly<RegisterAppointmentProps>): Promise<RegisterAppointmentResponse> {
   const { name, dateOfBirth, cpf, phone, email, address, price, observations } =
     data
 

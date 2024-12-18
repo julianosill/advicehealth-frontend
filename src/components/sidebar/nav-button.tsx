@@ -7,7 +7,7 @@ interface NavButtonProps {
   icon: LucideIcon
 }
 
-export function NavButton({ to, title, icon: Icon }: NavButtonProps) {
+export function NavButton({ to, title, icon: Icon }: Readonly<NavButtonProps>) {
   const { pathname } = useLocation()
 
   return (
