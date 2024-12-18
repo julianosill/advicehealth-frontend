@@ -80,8 +80,7 @@ Apenas para registro, seguem alguns pontos que tenho capacidade e habilidade par
   - Função para alterar o `status` do agentamento;
   - Adição de um seletor para o tipo de consulta (convênio ou privada);
   - Definição de um valor pré-determinado da consulta conforme cada profissional;
-  - Validação do CPF e separação do campo de endereço (campos para rua, bairro, cidade, etc.);
-  - Redirecionar o usuário caso tente acessar manulmente a página de edição de un agendamento que não existe.
+  - Validação do CPF e separação do campo de endereço (campos para rua, bairro, cidade, etc.).
 - **Consulta**:
   - Funcionalidade para ordenação da tabela, como data, valor, nome ou profissional;
   - Redicionar o usuário caso tente acessar uma paginação superior, exemplo: a consulta resulta em 3 páginas e o usuário manualmente altera o endereço para a página 4.

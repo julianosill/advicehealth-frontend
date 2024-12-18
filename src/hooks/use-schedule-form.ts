@@ -14,6 +14,7 @@ import {
   scheduleFormSchema,
   wait,
 } from '@/helpers'
+import { ROUTES } from '@/routes'
 import { useAppSelector } from '@/store'
 import { setDate, setDoctor } from '@/store/slice'
 import type { DoctorWithIdAndName } from '@/types'
@@ -39,9 +40,10 @@ export function useScheduleForm(appointmentToUpdateId?: string) {
 
   async function getAppointmentToUpdate(appointmentId: string) {
     const result = await getAppointment(appointmentId)
+
     const appointment = result.appointment
 
-    if (!appointment) return
+    if (!appointment) return navigate(ROUTES.schedule)
 
     const appointmentDatetime = appointment.datetime
     const appointmentDoctor = {

@@ -11,7 +11,7 @@ type GetAppointmentResponse = {
 export async function getAppointment(
   id: Readonly<string>,
 ): Promise<GetAppointmentResponse> {
-  const response = await api.get(`/appointments/${id}`)
+  const response = await api.get(`/appointments/${id}`).catch(error => error)
 
   const appointment = response.data
 
