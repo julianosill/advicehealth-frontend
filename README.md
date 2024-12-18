@@ -4,11 +4,11 @@ Aplicação web desenvolvida em `Typescript` e `React` como teste técnico refer
 
 ## Cenário da aplicação
 
-A aplicação consiste em 3 telas principais: `Área de trabalho`, `Agendamento de consulta`, `Consulta de agendamentos`. Além de outras telas de apoio, como registro e alteração de agendamento.
+A aplicação consiste em três telas principais: `Área de Trabalho`, `Agendamento de Consulta` e `Consulta de Agendamentos`. Além dessas, conta com telas de apoio, como registro e alteração de agendamentos.
 
-Ela será utilizada por profissionais de atendimento de clínicas de saúde, utilizando computadores e laptops, desconsiderando seu uso em dispositivos móveis como smartphones e tablets.
+Ela é projetada para uso por profissionais de atendimento em clínicas de saúde, em computadores e laptops, não sendo otimizada para dispositivos móveis, como smartphones e tablets.
 
-A aplicação tem a função de auxiliar no gerenciamento da rotina de atendimento da clínica, como agendar consultas, verificar dias e horários disponíveis, registrar dados de pacientes e afins.
+Seu objetivo é auxiliar no gerenciamento da rotina de atendimento da clínica, permitindo agendar consultas, verificar dias e horários disponíveis, registrar dados de pacientes, entre outras funcionalidades.
 
 ## Bibliotecas e ferramentas
 
@@ -24,18 +24,18 @@ Foram utilizadas as seguintes bibliotecas e ferramentas para auxiliar e agilizar
 
 ## Arquitetura de pastas
 
-A arquitetura de arquivos e pastas deste projeto foi organizada com base em suas respetivas funcionalidades. Estas pastas contém subpastas conforme seu escopo, exemplo:
+A arquitetura de arquivos e pastas deste projeto foi organizada com base em suas respectivas funcionalidades. Essas pastas contêm subpastas conforme seu escopo. Exemplo:
 - `/api`: funções de requisição HTTP;
-  - `/api/appointments`: requisições relacionadas a agendamentos.
+  - `/api/appointments`: requisições relacionadas a agendamentos;
 - `/components`: componentes de interação com o usuário, como formulários, botões e afins;
-  - `/ui`: componentes globais e isolados, exemplo: `Card`, `Button`, `Input`, `Label`.
+  - `/ui`: componentes globais e isolados, exemplo: `Card`, `Button`, `Input`, `Label`;
 - `/config`: arquivos de configuração;
-- `/constants`: dados e informações constantes, ou seja, não serão alterados através de interações com o usuário;
-- `/helpers`: funções de auxília, como formatadores de dados, validações, etc;
+- `/constants`: dados e informações constantes, ou seja, que não sofrerão alterações através de interações com o usuário;
+- `/helpers`: funções auxiliares, como formatadores de dados, validações, etc.;
 - `/hooks`: hooks utilizados em uma aplicação `React`;
 - `/layouts`: estrutura de layout padrão para determinadas telas;
 - `/lib`: configurações de bibliotecas externas;
-- `/pages`: componentes responsáveisp pela exibição das telas ao usuário;
+- `/pages`: componentes responsáveis pela exibição das páginas ao usuário;
 - `/routes`: configurações das rotas da aplicação;
 - `/store`: configurações e armazenamento de estado global;
 - `/types`: arquivos de tipagens globais.
@@ -51,13 +51,13 @@ npm install
 npm run dev
 ```
 
-A aplicação está disponível para acesso no endereço informado em seu terminal, por exemplo: [http://localhost:5173](http://localhost:5173).
+A aplicação estará disponível para acesso no endereço exibido no terminal, por exemplo: [http://localhost:5173](http://localhost:5173).
 
 ### Observações de execução
 
-Verifique se as rotas da API informada em seu terminar é igual a `http://localhost:3333`.
+Verifique se as rotas da API exibidas no terminal correspondem a `http://localhost:3333`.
 
-Caso o endereço informado seja diferente do padrão configurado, crie um arquivo `.env` na raiz do projeto e adicione a seguinte variável:
+Caso o endereço informado seja diferente do padrão configurado, crie um arquivo `.env` na raiz do projeto e adicione a seguinte variável de ambiente:
 
 ```
 VITE_API_URL="endereço-da-api"
@@ -66,26 +66,25 @@ E execute o projeto novamente.
 
 ## Observações do desenvolvimento
 
-Como não havia uma API para realizar as requisições, utilizei a biblioteca `json-server` para simulação. Embora essas funções criadas não tenham um bom desempenho ou boas práticas, apenas criei para exemplificar o funcionamento das requisições.
+Como não havia uma API disponível para realizar as requisições, utilizei a biblioteca `json-server` para simulação. Embora as funções criadas não apresentem bom desempenho ou sigam as melhores práticas, elas foram desenvolvidas apenas para exemplificar o funcionamento das requisições.
 
-Foi adicionado um arquivo de exemplo para servir de banco de dados. Nele há registros entre os dias **17/12** e **20/12**.
+Foi adicionado um arquivo de exemplo para servir como banco de dados, contendo registros entre os dias **17/12** e **20/12**.
 
-Há melhorias e funcionalidades que foram pensadas, porém devido ao tempo disponível para o desenvolvimento, foram deixadas de lado para não ultrapassar o prazo estabelecido. Meu foco foi em tornar a aplicação minimamente funcional com interações básicas.
+Mesmo que melhorias e funcionalidades adicionais tenham sido planejadas, elas foram deixadas de lado devido ao tempo limitado para o desenvolvimento, a fim de não ultrapassar o prazo estabelecido. Meu foco foi garantir que a aplicação fosse minimamente funcional, com interações básicas.
 
-Apenas para registro, seguem alguns pontos que tenho capacidade e habilidade para desenvolver com um maior tempo disponível:
+Apenas para registro, abaixo estão alguns pontos que eu teria a capacidade e habilidade para desenvolver, caso houvesse mais tempo disponível:
 
 - **Área de trabalho**:
-  - Funcionalidade de alterar as informações dos lembretes.
+  - Funcionalidade para alterar as informações dos lembretes.
 - **Agendamentos** :
-  - Função para alterar o `status` do agentamento;
+  - Funcionalidade para alterar o `status` do agendamento;
   - Adição de um seletor para o tipo de consulta (convênio ou privada);
-  - Definição de um valor pré-determinado da consulta conforme cada profissional;
-  - Validação do CPF e separação do campo de endereço (campos para rua, bairro, cidade, etc.).
+  - Definição de um valor pré-determinado para a consulta, conforme cada profissional;
+  - Validação do CPF e separação do campo de endereço (com campos específicos para rua, bairro, cidade, etc.).
 - **Consulta**:
-  - Funcionalidade para ordenação da tabela, como data, valor, nome ou profissional;
-  - Redicionar o usuário caso tente acessar uma paginação superior, exemplo: a consulta resulta em 3 páginas e o usuário manualmente altera o endereço para a página 4.
+  - Funcionalidade para ordenação da tabela por data, valor, nome ou profissional.
 
-Outro ponto a ser ressaltado é a adaptação para telas menores foi desconsiderada, visando o cenário de uso apenas em telas de laptops ou maiores.
+Outro ponto a ser ressaltado é que a adaptação para telas menores foi desconsiderada, pois o foco foi no uso em dispositivos com telas de laptops ou maiores.
 
 ---
 
