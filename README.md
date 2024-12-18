@@ -75,7 +75,6 @@ Há melhorias e funcionalidades que foram pensadas, porém devido ao tempo dispo
 Apenas para registro, seguem alguns pontos que tenho capacidade e habilidade para desenvolver com um maior tempo disponível:
 
 - **Área de trabalho**:
-  - Gráfico para exibição de estatísticas;
   - Funcionalidade de alterar as informações dos lembretes.
 - **Agendamentos** :
   - Função para alterar o `status` do agentamento;

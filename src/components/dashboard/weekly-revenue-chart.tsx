@@ -3,13 +3,9 @@
 import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts'
 
 import { Card } from '@/components/ui/card'
-import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from '@/components/ui/chart'
+import { Chart, type ChartConfig } from '@/components/ui/chart'
 import { formatCurrency } from '@/helpers'
+import { cn } from '@/lib/utils'
 
 const chartData = [
   { date: '16/12', revenue: 472900 },
@@ -20,17 +16,18 @@ const chartData = [
 ]
 
 const chartConfig = {
-  revenue: {
-    label: 'Receita',
-    color: 'hsl(var(--chart-1))',
-  },
+  revenue: { color: 'hsl(var(--chart-1))' },
 } satisfies ChartConfig
 
-export function WeeklyRevenueChart() {
+export function WeeklyRevenueChart({
+  className,
+  ...props
+}: Readonly<React.HTMLAttributes<HTMLDivElement>>) {
   return (
-    <div className='flex max-h-[19.5rem] flex-1 flex-col gap-2'>
+    <div className={cn('flex flex-1 flex-col gap-2', className)} {...props}>
       <Card.SubTitle>Faturamento semanal</Card.SubTitle>
-      <ChartContainer config={chartConfig} className='h-full w-full'>
+
+      <Chart.Container config={chartConfig} className='h-full w-full'>
         <AreaChart
           accessibilityLayer
           data={chartData}
@@ -43,10 +40,10 @@ export function WeeklyRevenueChart() {
             axisLine={false}
             tickMargin={8}
           />
-          <ChartTooltip
+          <Chart.Tooltip
             cursor={false}
             content={
-              <ChartTooltipContent
+              <Chart.TooltipContent
                 className='min-w-10'
                 indicator='line'
                 formatter={(value, _, item) => (
@@ -71,7 +68,7 @@ export function WeeklyRevenueChart() {
             strokeWidth={2}
           />
         </AreaChart>
-      </ChartContainer>
+      </Chart.Container>
     </div>
   )
 }

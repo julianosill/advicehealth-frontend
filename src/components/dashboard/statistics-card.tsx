@@ -14,9 +14,9 @@ export function StatisticsCard({
         <Card.Title>Estatísticas</Card.Title>
       </Card.Header>
 
-      <Card.Content className='flex flex-row gap-6'>
-        <WeeklyRevenueChart />
-        <DailyAndWeeklyStatisticsCard className='w-[22rem]' />
+      <Card.Content className='flex gap-6 max-xl:flex-col'>
+        <WeeklyRevenueChart className='xl:max-h-[19.5rem]' />
+        <DailyAndWeeklyStatisticsCard className='xl:w-[21rem]' />
       </Card.Content>
     </Card.Root>
   )
